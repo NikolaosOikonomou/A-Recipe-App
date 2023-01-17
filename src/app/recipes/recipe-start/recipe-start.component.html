@@ -1,1 +1,4 @@
-<h3>Please selecet a recipe!</h3>
+<div [ngSwitch]="recipes">
+  <h3 *ngSwitchCase="recipes.length > 0">Oups! No recipes left!</h3>
+  <h3 *ngSwitchDefault>Please selecet a recipe!</h3>
+</div>
