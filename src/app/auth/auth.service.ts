@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 
-//Define how the response will look like. Documatation
+//Define how the response will look like.Using this in http requests.
 export interface AuthResponseData {
   kind: string;
   idToken: string;

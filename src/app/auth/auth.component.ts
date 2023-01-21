@@ -7,6 +7,7 @@ import { AuthResponseData, AuthService } from './auth.service';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent {
   isLoginMode: boolean = true;
@@ -23,6 +24,7 @@ export class AuthComponent {
     if (!form.valid) {
       return;
     }
+    console.log(form);
     const email = form.value.email;
     const password = form.value.password;
     let authObs: Observable<AuthResponseData>;
@@ -42,16 +44,21 @@ export class AuthComponent {
         console.log(errorMessage);
         this.error = errorMessage;
         this.isLoading = false;
+        this.fadeOutMessage();
       },
       complete: () => {
         this.isLoading = false;
         this.isLoggedIn = true;
+        this.fadeOutMessage();
       },
     });
-    form.reset();
+    //form.reset();
   }
 
-  onHandleError() {
-    this.error = null;
+  fadeOutMessage() {
+    setTimeout(() => {
+      this.error = null;
+      this.isLoggedIn = false;
+    }, 4000);
   }
 }
