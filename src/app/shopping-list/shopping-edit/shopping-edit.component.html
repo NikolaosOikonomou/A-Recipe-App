@@ -13,8 +13,9 @@
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <button class="btn btn-success" type="sumbit" [disabled]="!f.valid">{{editMode ? 'Udate' : 'Add'}}</button>
-          <button class="btn btn-danger" type="button" *ngIf="editMode" (click)="onDelete()">Delete</button>
+          <button class="btn btn-success" type="sumbit" [disabled]="!f.valid">{{editMode ? 'Udate' : 'Add'}}</button> |
+          <button class="btn btn-danger" type="button" *ngIf="editMode" (click)="onDelete()">Delete </button> <span
+            *ngIf="editMode"> | </span>
           <button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
         </div>
       </div>
