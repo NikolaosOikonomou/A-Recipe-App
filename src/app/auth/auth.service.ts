@@ -82,7 +82,9 @@ export class AuthService {
     if (loadedUser.token) {
       this.user.next(loadedUser);
       //Future time minus current to get current Token's exparation time
-      const exparationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime()
+      const exparationDuration =
+        new Date(userData._tokenExpirationDate).getTime() -
+        new Date().getTime();
       this.autoLogout(exparationDuration);
     }
   }
@@ -90,7 +92,7 @@ export class AuthService {
   logout() {
     this.user.next(null);
     this.router.navigate(['/auth']);
-    localStorage.removeItem('userDate');
+    localStorage.removeItem('userData');
     if (this.tokenExpirationTimer) {
       clearTimeout(this.tokenExpirationTimer);
     }
@@ -115,7 +117,7 @@ export class AuthService {
       expirationDate
     );
     this.user.next(user);
-    this.autoLogout(resData.expiresIn as any * 1000)
+    this.autoLogout((resData.expiresIn as any) * 1000);
     localStorage.setItem('userData', JSON.stringify(user));
   }
 
