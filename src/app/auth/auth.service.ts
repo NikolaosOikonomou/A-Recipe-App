@@ -19,6 +19,7 @@ export interface AuthResponseData {
 export class AuthService {
   firebaseKey = 'AIzaSyDNbIWpaVYPy33wjDT_N5wadRkSid67kHg';
   user = new BehaviorSubject<User | null>(null);
+  tokenExpirationTimer!: any;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -80,12 +81,27 @@ export class AuthService {
 
     if (loadedUser.token) {
       this.user.next(loadedUser);
+      //Future time minus current to get current Token's exparation time
+      const exparationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime()
+      this.autoLogout(exparationDuration);
     }
   }
 
   logout() {
     this.user.next(null);
     this.router.navigate(['/auth']);
+    localStorage.removeItem('userDate');
+    if (this.tokenExpirationTimer) {
+      clearTimeout(this.tokenExpirationTimer);
+    }
+    this.tokenExpirationTimer = null;
+  }
+
+  autoLogout(exparationDuration: number) {
+    console.log(exparationDuration);
+    this.tokenExpirationTimer = setTimeout(() => {
+      this.logout();
+    }, exparationDuration);
   }
 
   private handleAuthentication(resData: AuthResponseData) {
@@ -99,6 +115,7 @@ export class AuthService {
       expirationDate
     );
     this.user.next(user);
+    this.autoLogout(resData.expiresIn as any * 1000)
     localStorage.setItem('userData', JSON.stringify(user));
   }
 
