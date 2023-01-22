@@ -40,23 +40,28 @@ export class AuthComponent {
     authObs.subscribe({
       next: (response) => {
         console.log(response);
-        this.router.navigate(['/recipes'])
+        this.router.navigate(['/recipes']);
       },
       error: (errorMessage) => {
         console.log(errorMessage);
         this.error = errorMessage;
         this.isLoading = false;
-        this.fadeOutMessage();
+        //this.fadeOutMessage();
       },
       complete: () => {
         this.isLoading = false;
         this.isLoggedIn = true;
-        this.fadeOutMessage();
+        //this.fadeOutMessage();
       },
     });
-    //form.reset();
+    form.reset();
   }
 
+  closeModal() {
+    this.error = null;
+  }
+
+  //Call this function to close error/success message automatically
   fadeOutMessage() {
     setTimeout(() => {
       this.error = null;

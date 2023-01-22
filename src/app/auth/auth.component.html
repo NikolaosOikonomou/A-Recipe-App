@@ -21,7 +21,8 @@
         </div>
       </form>
     </ng-template>
-    <div id="alertArea">
+    <app-alert [message]="error" *ngIf="error" (closeMessageModal)="closeModal()"></app-alert>
+    <!-- <div id="alertArea">
       <div ngClass="fadeOutMessage" class="alert alert-danger" role="alert" *ngIf="error">
         {{error}}
         <button type="button" class="btn btn-danger" (click)="error = null">Okey</button>
@@ -30,6 +31,6 @@
         You have successfully logged in!
         <button type="button" class="btn btn-success" (click)="isLoggedIn = false">Okey</button>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
