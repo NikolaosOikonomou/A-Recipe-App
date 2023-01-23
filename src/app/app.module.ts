@@ -17,7 +17,6 @@ import { CoreModule } from './core.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RecipesModule,
     ShoppingListModule,
     SharedModule,
     AuthModule,
