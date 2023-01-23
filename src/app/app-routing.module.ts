@@ -7,7 +7,7 @@ const appRoutes: Routes = [
   { path: '', redirectTo: 'recipes', pathMatch: 'full' },
   // Recipes Router
   // ShoppingList Router
-  { path: 'auth', component: AuthComponent },
+  // Auth
 ];
 
 @NgModule({
