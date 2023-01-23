@@ -7,6 +7,6 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 @NgModule({
   declarations: [AlertComponent, LoadingSpinnerComponent, DropdownDirective],
   imports: [CommonModule],
-  exports: [AlertComponent, LoadingSpinnerComponent, DropdownDirective, CommonModule],
+  exports: [AlertComponent, LoadingSpinnerComponent, DropdownDirective],
 })
 export class SharedModule {}
