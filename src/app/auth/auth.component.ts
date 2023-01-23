@@ -61,7 +61,7 @@ export class AuthComponent {
     this.error = null;
   }
 
-  //Call this function to close error/success message automatically
+  //Call this function to close error/success message automatically(Outdated)
   fadeOutMessage() {
     setTimeout(() => {
       this.error = null;
