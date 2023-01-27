@@ -15,7 +15,7 @@
           <input type="password" id="password" class="form-control" ngModel name="password" required minlength="6"
             #password="ngModel">
         </div>
-        <span *ngIf="!password.valid && password.touched" class="help-block">Password must contain at least 6
+        <span *ngIf="!password.valid && password.touched" class="help-block">Password must contains at least 6
           chars!</span>
         <div>
           <button class="btn btn-primary" type="submit" [disabled]="!authForm.valid">
