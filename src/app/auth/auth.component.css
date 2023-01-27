@@ -2,3 +2,12 @@
   margin-top: 20px;
   display: flex;
 }
+
+input.ng-invalid.ng-touched {
+  border-bottom: 1px solid red;
+}
+
+.help-block{
+  color: red;
+}
+
