@@ -10,6 +10,7 @@ import { DataStorageService } from '../shared/data-storage.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated: boolean = false;
+  isCollapsed:boolean = true;
   private userSub!: Subscription;
   constructor(
     private dataStorageService: DataStorageService,
@@ -20,6 +21,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.userSub = this.authService.user.subscribe((user) => {
       this.isAuthenticated = !!user; // !user ? false : true;
     });
+  }
+
+  toggleCollapse(){
+    this.isCollapsed = !this.isCollapsed;
   }
 
   onSaveData() {
